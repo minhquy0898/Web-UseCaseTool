@@ -62,13 +62,14 @@ export const dataUUCP = [
         
         UseCaseClassification:'Simple',
         Weight:5,
-
+        NumberOfUseCases:0,
 
     },
     {
       
         UseCaseClassification:'Average',
         Weight:10,
+        NumberOfUseCases:0,
 
 
     },
@@ -77,7 +78,5 @@ export const dataUUCP = [
         UseCaseClassification:'Complex',
         Weight:15,
         NumberOfUseCases:0
-
-
-    },
+    }
 ]

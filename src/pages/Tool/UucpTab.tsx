@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,ChangeEvent } from "react";
 import PropTypes from "prop-types";
 import { CSVLink, CSVDownload } from "react-csv";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux.hook";
+import Papa from "papaparse";
+
 import {
   selectorCurrentUucp,
   selectorUucp,
@@ -19,7 +21,7 @@ const Uucp: React.FC = (props) => {
   const useUucp = useAppSelector(selectorUucp);
   const dispach = useAppDispatch();
   const Curnumber = useAppSelector(selectorCurrentUucp);
-  const [data, setData] = useState(dataUUCP);
+  const [data, setData] = useState<any[]>(dataUUCP);
   const [payLoad, setPayLoad] = useState<any[]>([]);
   const [Uucp, setUucp] = useState<IUseCasePointsUUCP>({
     average: 0,
@@ -29,7 +31,7 @@ const Uucp: React.FC = (props) => {
     
   });
 
-  console.log("check uucp ne", data);
+ 
   
   const handleUucp = (e: any) => {
     dispach(
@@ -67,6 +69,7 @@ const Uucp: React.FC = (props) => {
       object.NumberOfUseCases = Uucp.average
       result.push(object);
     })
+
     const dataComplex = data.filter((item) => item.UseCaseClassification === 'Complex')
     dataComplex.map((item) => {
       const object: any = {};
@@ -79,17 +82,50 @@ const Uucp: React.FC = (props) => {
     dataResult.UseCaseClassification = `Total: ${useUucp.uucp}`
     result.push(dataResult)
     setPayLoad(result)
-    console.log('check result',payLoad)
+    
     Toast.ToastSuccess({
       Success: "Uucw caculate complete",
     });
   };
+  const handleImportCSV = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target && event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+  
+      if (file && file.type !== 'text/csv') {
+        console.log('Only accept csv files ...');
+        return;
+      }
+      
+      Papa.parse(file, {
+        header: true,
+        complete: function(result) {
+          const dataCSV = result.data;
+          dataCSV.pop()
+          console.log('updated data', dataCSV);
+          setData(dataCSV)
+          
+          console.log('updated data', data);
+          
 
+        },
+      });
+    }
+  };
+  
+  useEffect(() => {
+    setUucp({
+      ...Uucp,
+      simple: data.find((item) => item.UseCaseClassification === 'Simple')?.NumberOfUseCases,
+      average: data.find((item) => item.UseCaseClassification === 'Average')?.NumberOfUseCases,
+      complex: data.find((item) => item.UseCaseClassification === 'Complex')?.NumberOfUseCases,
+    })
+    console.log('updated data simple', data.find((item) => item.UseCaseClassification === 'Simple')?.NumberOfUseCases);
+  },[data])
   useEffect(() => {
     if (
-      Curnumber.complex != 0 ||
-      Curnumber.average != 0 ||
-      Curnumber.simple != 0
+      Curnumber.complex !== 0 ||
+      Curnumber.average !== 0 ||
+      Curnumber.simple !== 0
     ) {
       setUucp({
         average: Curnumber.average,
@@ -126,9 +162,9 @@ const Uucp: React.FC = (props) => {
                   <div className="row__item uucp__Weight">{item.Weight}</div>
                   <div className="row__item uucp__x">x</div>
                   <div className="row__item uucp__numberCase">
-                    {item.UseCaseClassification === 'Simple' && Uucp.simple}
-                    {item.UseCaseClassification === 'Average' && Uucp.average}
-                    {item.UseCaseClassification === 'Complex' && Uucp.complex}
+                    {item.UseCaseClassification === 'Simple' &&  (Uucp.simple || item.NumberOfUseCases)}
+                    {item.UseCaseClassification === 'Average' && (Uucp.average || item.NumberOfUseCases)}
+                    {item.UseCaseClassification === 'Complex' && (Uucp.complex || item.NumberOfUseCases)}
                     
                   </div>
                   <div className="row__item uucp__Result">
@@ -157,7 +193,7 @@ const Uucp: React.FC = (props) => {
                 onChange={(e) =>
                   setUucp({
                     ...Uucp,
-                    simple: +e.target.value,
+                    simple: +e.target.value ,
                   })
                 }
               />
@@ -198,7 +234,11 @@ const Uucp: React.FC = (props) => {
               Caculate
             </button>
             {/* EXPORT CSV */}
-            <CSVLink data={payLoad}  filename={"my-file.csv"} className="items-center flex justify-center bg-[#50C2C9] py-4 rounded-full font-semibold text-white hover:bg-white hover:text-[#50C2C9] border-4 border-transparent my-4 hover:border-[#50C2C9]">Xuất file csv</CSVLink>;
+            <CSVLink data={payLoad}  filename={"my-file.csv"} className="items-center flex justify-center bg-[#50C2C9] py-4 rounded-full font-semibold text-white hover:bg-white hover:text-[#50C2C9] border-4 border-transparent my-4 hover:border-[#50C2C9]">Xuất file csv</CSVLink>
+            <div>
+              <label htmlFor="import-csv" className="button button--defause text-center flex items-center justify-center" >Import Excel</label>
+              <input type="file" hidden id="import-csv" onChange={handleImportCSV} />
+            </div>
           </div>
         </div>
         {useUucp.uucp !== 0 && (
