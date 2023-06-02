@@ -1,0 +1,111 @@
+.SignUp{
+    margin-top: 80px;
+
+    min-height: 100vh;
+    &__warpper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    &__content{
+        margin: 40px auto;
+    }
+    .form{
+        max-width: max-content;
+        min-width: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__nav{
+            display: flex;
+            align-items: center;
+            border: 4px solid #50C2C9;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      
+            &--active{
+                background-color: #50C2C9;
+                color: white;
+                
+            }
+            &__item{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 40px;
+               
+                border-radius: 8px;
+              
+                margin: 10px;
+                cursor: pointer;
+            }
+
+        }
+        .group{
+            margin: 5px 0;
+            input{
+                display: block;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                width: 361px;
+                height: 50px;
+                border-radius: 10px;
+                padding: 0px 20px;
+                outline: none;
+                &:focus{
+                    border: #50C2C9;
+                }
+            }
+            
+        }
+        
+        .button{
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: #50C2C9;
+            border-radius: 80px;
+            font-size: large;
+            font-weight: 600;
+            color: white;
+            border: 2px solid #ffffff;
+            &:hover{
+                border: 2px solid #50C2C9;
+                background-color: #ffffff;
+                color: #50C2C9;
+            }
+            &--custom {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            
+                border: 2px solid #50C2C9;
+                background-color: #ffffff;
+                color: #50C2C9;
+                margin: 2px 0;
+                &:hover{
+                    background-color: #50C2C9; 
+                    color: white;
+                }
+                img{
+                    display: block;
+                    width: 25px;
+                    object-fit: cover;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+    .alert{
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        a{
+            color: #50C2C9;
+            font-size: larger;
+        }
+    }
+}

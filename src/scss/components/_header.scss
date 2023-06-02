@@ -1,0 +1,78 @@
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;   
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;    
+    &__logo{
+       
+        a{
+            display: block;
+        }
+        font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    letter-spacing: 2px;
+        
+    }
+    &__wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a{
+            display: block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            &.active{
+                background-color: #50C2C9 !important;
+                color: white !important;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 40px;
+            }
+        }
+
+    }
+    &__user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__item i{
+            display: block;
+            font-size: medium;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        &__item img{
+            width: 40px;
+            height: 40px;
+            display: block;
+            border-radius: 100vh;
+            
+        }
+    }
+
+    &--hover:hover{
+        background-color: #50C2C9;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 40px;
+    }
+   
+}

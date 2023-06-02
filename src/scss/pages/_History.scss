@@ -1,0 +1,64 @@
+.History {
+  margin-top: 60px;
+  padding: 20px;
+  min-height: 100vh;
+  &__list {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10x;
+    border-radius: 10px;
+  }
+  &__item {
+    &:hover{
+        // background-color: #50c2c9;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 5px 0;
+    &__left {
+      & .id {
+        font-size: 15px;
+        font-weight: bold;
+        // padding: 10px 20px;
+        letter-spacing: 2px;
+        color: #666666;
+      }
+      & .name {
+        font-size: 20px;
+        font-weight: bold;
+        // padding: 10px 20px;
+       
+        padding: 5px 0;
+      }
+      & .date{
+        background-color: #625CBC;
+        border-radius: 100vh;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    }
+    
+  }
+  &__right{
+
+  }
+  &__number{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: larger;
+    font-weight: 700;
+      border-radius: 20px;
+      background-color: #625CBC;
+  }
+}

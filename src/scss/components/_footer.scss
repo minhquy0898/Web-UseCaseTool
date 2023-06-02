@@ -1,0 +1,46 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+ 
+  position: relative;
+  &__mobile {
+    height: 60vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-radius: 8px;
+   
+    
+  }
+  &__qr{
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: max-content;
+    color:#50C2C9 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bolder;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-20%,-50%);
+    img{
+        
+        width: 300px;
+        
+    }
+}
+}

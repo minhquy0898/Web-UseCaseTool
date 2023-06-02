@@ -1,0 +1,19 @@
+.Profile{
+    margin-top: 100px;
+    &__warpper{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & a > .button{
+            
+        }
+        &__button{
+            background-color: aquamarine;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+    }
+}

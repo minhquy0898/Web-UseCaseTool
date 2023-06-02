@@ -1,0 +1,76 @@
+.Result{
+    // padding: 40px;\
+    .form{
+        box-shadow: none;
+    }
+    background-color: #fff;
+    &__form{
+       
+        
+        &__body{
+            padding: 10px;
+            background-color: #fff;
+            border: 2px solid black;
+            border-radius: 8px;
+            margin: 10px 0px;
+        }
+        &__tool{
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            gap:20px;
+        }
+        &__desc{
+            font-size: large;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        &__warpper{
+            p{
+                line-height: 30px;
+            }
+        }
+    }
+    .table{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 8px;
+        padding: 5px;
+    }
+    .row{
+        p{
+            width: 100%;
+            padding: 10px 20px;
+          text-align: left;  
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+      
+        &__header{
+            background-color: #50C2C9;
+            color: white;
+            border-radius: 8px;
+        }
+        &__item{
+            padding: 10px 20px;
+            border-right:1px solid white ;
+            height: max-content;
+            min-height: 45px;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+    }
+    &__UseCaseClassification{
+        width: 40%;
+    }
+    &__Weight,&__x,&__Result{
+        width: 12%;
+    }
+    &__numberCase{
+        width: 20%;
+    }
+}
